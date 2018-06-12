@@ -21,91 +21,68 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="clientes")
+@Table(name="proveedores")
 public class Proveedores implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long nit;
 
 	@NotEmpty
-	private String nombre;
-	
-	@NotEmpty
-	private String apellido;
+	private String nombreProveedor;
 	
 	@NotEmpty
 	@Email
-	private String email;
+	private String emailProveedor;
 
-	@NotNull
-	@Column(name = "create_at")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date createAt;
-	
-	@OneToMany(mappedBy="cliente")
-	List<Factura> listaFacturas = new ArrayList<Factura>();
-	
-	public Proveedores() {
+	@OneToMany(mappedBy="producto")
+	List<Producto> listaProductos = new ArrayList<Producto>();
+
+	public Proveedores(Long nit, String nombreProveedor, String emailProveedor, List<Producto> listaProductos) {
 		super();
-	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	public Proveedores(List<Factura> listaFacturas) {
-		super();
-		this.listaFacturas = listaFacturas;
+		this.nit = nit;
+		this.nombreProveedor = nombreProveedor;
+		this.emailProveedor = emailProveedor;
+		this.listaProductos = listaProductos;
 	}
 
-
-
-	public void setId(Long id) {
-		this.id = id;
+	public Long getNit() {
+		return nit;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public void setNit(Long nit) {
+		this.nit = nit;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getNombreProveedor() {
+		return nombreProveedor;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public void setNombreProveedor(String nombreProveedor) {
+		this.nombreProveedor = nombreProveedor;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public String getEmailProveedor() {
+		return emailProveedor;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setEmailProveedor(String emailProveedor) {
+		this.emailProveedor = emailProveedor;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public List<Producto> getListaProductos() {
+		return listaProductos;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public void setListaProductos(List<Producto> listaProductos) {
+		this.listaProductos = listaProductos;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	@Override
+	public String toString() {
+		return "Proveedores [nit=" + nit + ", nombreProveedor=" + nombreProveedor + ", emailProveedor=" + emailProveedor
+				+ ", listaProductos=" + listaProductos + "]";
 	}
-
-	public List<Factura> getListaFacturas() {
-		return listaFacturas;
-	}
-
-	public void setListaFacturas(List<Factura> listaFacturas) {
-		this.listaFacturas = listaFacturas;
-	}
-
 }

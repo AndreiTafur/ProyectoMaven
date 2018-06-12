@@ -10,10 +10,8 @@ import java.util.Calendar;
  *
  */
 public class Pago {
-	private Factura fact;
-	private double total;
-	private Cliente client;
-	private Calendar fecha;
+	private Factura fact;	
+	private Calendar fechapago;
 	private String observacion;
 	/**
 	 * @param fact
@@ -22,37 +20,17 @@ public class Pago {
 	 * @param fecha
 	 * @param observacion
 	 */
-	public Pago(Factura fact, double total, Cliente client, Calendar fecha, String observacion) {
-		super();
-		this.fact = fact;
-		this.total = total;
-		this.client = client;
-		this.fecha = fecha;
-		this.observacion = observacion;
-	}
 	public Factura getFact() {
 		return fact;
 	}
 	public void setFact(Factura fact) {
 		this.fact = fact;
 	}
-	public double getTotal() {
-		return total;
+	public Calendar getFechapago() {
+		return fechapago;
 	}
-	public void setTotal(double total) {
-		this.total = total;
-	}
-	public Cliente getClient() {
-		return client;
-	}
-	public void setClient(Cliente client) {
-		this.client = client;
-	}
-	public Calendar getFecha() {
-		return fecha;
-	}
-	public void setFecha(Calendar fecha) {
-		this.fecha = fecha;
+	public void setFechapago(Calendar fechapago) {
+		this.fechapago = fechapago;
 	}
 	public String getObservacion() {
 		return observacion;
@@ -60,14 +38,16 @@ public class Pago {
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
-	@Override
-	public String toString() {
-		return "Pago [fact=" + fact + ", total=" + total + ", client=" + client + ", fecha=" + fecha + ", observacion="
-				+ observacion + "]";
+	/**
+	 * @param fact
+	 * @param fechapago
+	 * @param observacion
+	 */
+	public Pago(Factura fact, Calendar fechapago, String observacion) {
+		super();
+		this.fact = fact;
+		this.fechapago = fechapago;
+		this.observacion = observacion;
 	}
 	
-	
-	
-		
-
 }

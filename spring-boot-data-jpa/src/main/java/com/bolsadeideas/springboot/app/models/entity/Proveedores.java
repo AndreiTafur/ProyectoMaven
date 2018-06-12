@@ -38,7 +38,7 @@ public class Proveedores implements Serializable {
 	private String emailProveedor;
 
 	@OneToMany(mappedBy="producto")
-	List<Producto> listaProductos = new ArrayList<Producto>();
+	private List<Producto> listaProductos = new ArrayList<Producto>();
 
 	public Proveedores(Long nit, String nombreProveedor, String emailProveedor, List<Producto> listaProductos) {
 		super();
